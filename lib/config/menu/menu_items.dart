@@ -50,5 +50,11 @@ const appMenuItems = <MenuItems>[
     subtitle: 'A group of Flutter forms controls', 
     link: '/ui-controls', 
     icon: Icons.design_services_outlined
-  )
+  ),
+  MenuItems(
+    title: 'Intro to App', 
+    subtitle: 'Introducing tutorial', 
+    link: '/tutorial', 
+    icon: Icons.leak_add_sharp
+  ),
 ];
