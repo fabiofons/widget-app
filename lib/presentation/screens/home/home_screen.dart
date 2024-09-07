@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:widget_app/config/menu/menu_items.dart';
-import 'package:widget_app/presentation/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -52,7 +51,7 @@ class _CustomListTile extends StatelessWidget {
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subtitle),
       trailing: Icon(Icons.arrow_forward_ios_rounded, color: colorTheme.primary,),
-      contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
       onTap: () {
         // Navigator.of(context).push(
         //   MaterialPageRoute(
