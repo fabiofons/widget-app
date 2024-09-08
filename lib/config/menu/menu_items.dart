@@ -16,6 +16,12 @@ class MenuItems {
 
 const appMenuItems = <MenuItems>[
   MenuItems(
+    title: 'Counter', 
+    subtitle: 'Custom counter', 
+    link: '/counter', 
+    icon: Icons.countertops_rounded
+  ),
+  MenuItems(
     title: 'Botones', 
     subtitle: 'Varios botones en Flutter', 
     link: '/buttons', 
@@ -62,5 +68,11 @@ const appMenuItems = <MenuItems>[
     subtitle: 'Scrolling more and more and pull refresh', 
     link: '/infinite-scroll', 
     icon: Icons.swap_vert_circle_outlined
+  ),
+  MenuItems(
+    title: 'Themes', 
+    subtitle: 'You can change your theme here', 
+    link: '/theme-changer', 
+    icon: Icons.theater_comedy_outlined
   ),
 ];

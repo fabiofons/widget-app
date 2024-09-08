@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:widget_app/config/menu/menu_items.dart';
 // import 'package:widget_app/config/menu/menu_items.dart';
 
 
 class SideMenu extends StatefulWidget {
-  const SideMenu({super.key});
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  const SideMenu({
+    super.key, 
+    required this.scaffoldKey
+  });
 
   @override
   State<SideMenu> createState() => _SideMenuState();
@@ -15,19 +23,47 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
+
+    final hasNotch = MediaQuery.of(context).viewPadding.top;
+
     return  NavigationDrawer(
       selectedIndex: navDrawerIndex,
-      onDestinationSelected: (value) => setState(() {
-        navDrawerIndex = value;
-      }),
-      children: const [
-        NavigationDrawerDestination(
-          icon: Icon(Icons.add_business_outlined), 
-          label: Text('Option 1')
+      onDestinationSelected: (value) {
+        final menuItem = appMenuItems[value];
+        setState(() {
+          navDrawerIndex = value;
+        });
+
+        context.push(menuItem.link);
+        widget.scaffoldKey.currentState?.closeDrawer();
+
+      },
+      children:  [
+        Padding(
+          padding: EdgeInsets.fromLTRB(28,hasNotch > 35 ? 0 : 20, 16, 10),
+          child: const Text('Main'),
         ),
-        NavigationDrawerDestination(
-          icon: Icon(Icons.add_business_outlined), 
-          label: Text('Option 2')
+        ...appMenuItems
+          .sublist(0,3)
+          .map((item) => NavigationDrawerDestination(
+            icon: Icon(item.icon), 
+            label: Text(item.title)
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(28, 10, 16, 10),
+          child: Divider(),
+        ),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(28, 10, 16, 10),
+          child: Text('More Options'),
+        ),
+        ...appMenuItems
+          .sublist(3)
+          .map((item) => NavigationDrawerDestination(
+            icon: Icon(item.icon), 
+            label: Text(item.title)
+          ),
         ),
       ]
     );

@@ -20,8 +20,8 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
 
   void changeShape() {
     final random = Random();
-    width = random.nextInt(300) + 60;
-    height = random.nextInt(400) + 120;
+    width = random.nextInt(300) + 100;
+    height = random.nextInt(400) + 150;
     color = Color.fromRGBO(
       random.nextInt(255), //red
       random.nextInt(255), //green
@@ -41,13 +41,13 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
       body: Center(
         child:  AnimatedContainer(
           duration: const Duration(milliseconds: 400),
-          curve: Curves.elasticInOut,
+          curve: Curves.bounceInOut,
           width: width <= 0 ? 0 : width,
           height: height <= 0 ? 0 : height,
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(
-              borderRadius <= 0 ? 0 : borderRadius
+              borderRadius <= 0 ? 1 : borderRadius
             )
           ),
         ),
